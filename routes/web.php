@@ -48,4 +48,5 @@ Route::middleware('isLogin')->group(function() {
    route::get('/edit/{id}', [TodoController::class,'edit'])->name('edit');
    route::patch('/update/{id}', [TodoController::class, 'update'])->name('update');
    route::delete('/delete/{id}',[TodoController::class,'destroy'])->name('destroy');
+   route::patch('/complated/{id}', [TodoController::class,'updateToComplated'])->name('updated-complated');
 });

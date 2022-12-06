@@ -151,8 +151,15 @@ class TodoController extends Controller
     {
         Todo::where('id', $id)->delete();
         //menghapus data yang ada di database
-        return redirect('/dashboard')->with('succesDelete', 'Berhasil Menghapus Data Todo!');
+        return redirect('/data')->with('succesDelete', 'Berhasil Menghapus Data Todo!');
     }
 
-    
+    public function updateToComplated(Request $request, $id)
+    {
+    Todo::where('id', '=', $id)->update([
+        'status' => 1,
+        'done_time' => \carbon\carbon::now(),
+    ]);
+    return redirect()->back()->with('done', 'Todo telah selesai dikerjakan!');
+    }
 }
